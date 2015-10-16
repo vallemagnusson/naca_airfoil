@@ -1,4 +1,6 @@
 import os
 
-print os.listdir("msh")
-os.system("dolfin-convert msh/r0a0n200.msh msh/out.xml")
+mshDir = os.listdir("msh")
+for filename in mshDir:
+	print os.path.splitext(filename)[0]
+#	os.system("dolfin-convert msh/" + filename + " msh/out.xml")
