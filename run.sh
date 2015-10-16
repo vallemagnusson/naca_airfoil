@@ -17,7 +17,7 @@
 #
 # EDIT FOLLOWING VARIABLES
 # Path to GMSH binary
-GMSHBIN="/user/bin/gmsh"
+GMSHBIN="/usr/bin/gmsh"
 #GMSHBIN="/Applications/Gmsh.app/Contents/MacOS/gmsh"
 # Path to dir where geo files will be stored
 GEODIR="geo"
