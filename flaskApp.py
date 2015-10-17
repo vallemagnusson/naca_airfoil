@@ -5,7 +5,7 @@ import sys
 import os
 import time
 
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__, template_folder='templates')
 
 @app.route("/messaging", methods=['GET'])
 def compute_drag_free_landing(initial_velocity, initial_angle):
