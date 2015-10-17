@@ -7,7 +7,7 @@ def readFile(fileName):
 	print theFile
 	timeColumn = []
 	#print theFile.split()
-	lines = theFile.readlines()
+	lines = open(fileName, "r").readlines()
 	print lines
 	for line in theFile.split():
 		timeColumn.append(line[0])
