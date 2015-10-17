@@ -1,15 +1,9 @@
 #!flask/bin/python
-from celery import Celery
-from celery import group
-from flask import Flask, jsonify
-import subprocess
+
+from flask import Flask, jsonify, request
 import sys
 import os
-import swiftclient.client
-import json
 import time
-from collections import Counter
-import urllib2
 
 app = Flask(__name__)
 
@@ -21,6 +15,18 @@ def compute_drag_free_landing(initial_velocity, initial_angle):
 def show_user_profile(username):
     # show the user profile for that user
     return 'User %s' % username
+@app.route("/input", methods=['GET', 'PUT'])
+def input():
+	if request.method == 'PUT':
+		if valid_login(request.form['username'],request.form['password']):
+			return log_the_user_in(request.form['username'])
+        else:
+            error = 'Invalid username/password'
+    # the code below is executed if the request method
+    # was GET or the credentials were invalid
+    return render_template('login.html', error=error)
+
+
 #def start():
 #	return "sidan fungerar", 200
 
