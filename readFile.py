@@ -9,11 +9,11 @@ def readFile(fileName):
 	lifeColumn = []
 	dragColumn = []
 	#print theFile.split()
-	#lines = open(fileName, "r").readlines()
-	with open(fileName, "r") as f:
-		content = f.readlines()
-		print content
-	#print lines
+	lines = open(fileName, "r").readlines()
+	#with open(fileName, "r") as f:
+		#content = f.readlines()
+		#print content
+	print lines
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
 	#print timeColumn
