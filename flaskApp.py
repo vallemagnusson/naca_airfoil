@@ -21,11 +21,11 @@ def input():
 	if request.method == 'PUT':
 		if valid_login(request.form['username'],request.form['password']):
 			return log_the_user_in(request.form['username'])
-        else:
-            error = 'Invalid username/password'
-    # the code below is executed if the request method
-    # was GET or the credentials were invalid
-    return render_template('login.html', error=error)
+		else:
+			error = 'Invalid username/password'
+	# the code below is executed if the request method
+	# was GET or the credentials were invalid
+	return render_template('login.html', error=error)
 
 
 #def start():
