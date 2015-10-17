@@ -11,8 +11,8 @@ def readFile(fileName):
 	#print theFile.split()
 	#lines = open(fileName, "r").readlines()
 	with open(fileName, "r") as f:
-    	content = f.readlines()
-    	print content
+		content = f.readlines()
+		print content
 	#print lines
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
