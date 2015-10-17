@@ -27,11 +27,12 @@ def show_user_profile(username):
 #	# was GET or the credentials were invalid
 #	return render_template('login.html', error=error)
 
-@app.route('/index/', methods=['GET'])
+@app.route('/index/', methods=['GET','POST'])
 def hello_world():
 	author = "vama"
 	name = "Valle Magnusson"
-	return render_template('index.html', author=author, name=name)
+	return app.root_path
+	#return render_template('index.html', author=author, name=name)
 #def start():
 #	return "sidan fungerar", 200
 
