@@ -5,7 +5,7 @@ import sys
 import os
 import time
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='template')
 
 @app.route("/messaging", methods=['GET'])
 def compute_drag_free_landing(initial_velocity, initial_angle):
@@ -31,7 +31,7 @@ def input():
 def hello_world():
 	author = "vama"
 	name = "Valle Magnusson"
-	return render_template('/index.html', author=author, name=name)
+	return render_template('index.html', author=author, name=name)
 #def start():
 #	return "sidan fungerar", 200
 
