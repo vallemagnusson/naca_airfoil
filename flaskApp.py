@@ -17,6 +17,7 @@ def show_user_profile(username):
     return 'User %s' % username
 @app.route("/input", methods=['GET', 'PUT'])
 def input():
+	error = None
 	if request.method == 'PUT':
 		if valid_login(request.form['username'],request.form['password']):
 			return log_the_user_in(request.form['username'])
