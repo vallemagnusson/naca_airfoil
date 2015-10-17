@@ -6,4 +6,4 @@ def readFile(fileName):
 	theFile = open(fileName, "r")
 	print theFile
 
-readFile(x)
+readFile("/navier_stokes_solver/results/drag_ligt.m")
