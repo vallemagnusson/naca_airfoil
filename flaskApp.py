@@ -33,7 +33,7 @@ def hello_world():
 	name = "Valle Magnusson"
 	#return app.root_path
 	return render_template('index.html', author=author, name=name)
-
+	
 @app.route('/')
 def form():
     return render_template('form_submit.html')
@@ -44,10 +44,5 @@ def hello():
 	email=request.form['youremail']
 	return render_template('form_action.html', name=name, email=email)
 
-#if __name__ == "__main__":
-#	app.run(host="0.0.0.0", debug=True )
-if __name__ == '__main__':
-  app.run( 
-        host="0.0.0.0",
-        port=int("80")
-  )
+if __name__ == "__main__":
+	app.run(host="0.0.0.0", debug=True )
