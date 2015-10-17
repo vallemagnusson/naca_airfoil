@@ -19,7 +19,7 @@ def runsh():
 	n_angles=request.form['n_angles']
 	n_nodes=request.form['n_nodes']
 	n_levels=request.form['n_levels']
-	os.system("run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
+	os.system("./run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
 	return render_template('runsh.html', angle_start=angle_start, angle_stop=angle_stop, n_angles=n_angles, n_nodes=n_nodes, n_levels=n_levels)
 
 
