@@ -6,7 +6,7 @@ def readFile(fileName):
 	theFile = open(fileName, "r").read()
 	#print theFile
 	timeColumn = []
-	lifeColumn = []
+	liftColumn = []
 	dragColumn = []
 	#print theFile.split()
 	lines = open(fileName, "r").readlines()
@@ -14,7 +14,14 @@ def readFile(fileName):
 		#content = f.readlines()
 		#print content
 	for x in range(1, len(lines)):
-		print lines[x]
+		time = lines[x].strip().split()[0]
+		timeColumn.append(time)
+		lift = lines[x].strip().split()[1]
+		liftColumn.append(lift)
+		drag = lines[x].strip().split()[2]
+		timeColumn.append(drag)
+		print timeColumn
+		#print lines[x].strip()
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
 	#print timeColumn
