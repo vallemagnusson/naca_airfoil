@@ -17,6 +17,10 @@ app = Flask(__name__)
 def compute_drag_free_landing(initial_velocity, initial_angle):
 	return landing_point
 
+@app.route('/user/<username>')
+def show_user_profile(username):
+    # show the user profile for that user
+    return 'User %s' % username
 #def start():
 #	return "sidan fungerar", 200
 
