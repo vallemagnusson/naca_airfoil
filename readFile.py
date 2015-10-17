@@ -1,6 +1,9 @@
 import os
 import sys
+import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
+
 
 def readFile(fileName):
 	theFile = open(fileName, "r").read()
@@ -27,6 +30,7 @@ def readFile(fileName):
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
 	#print timeColumn
+	matplotlib.use('Agg')
 	plt.plot(timeColumn, liftColumn)
 	plt.show()
 
