@@ -31,8 +31,8 @@ def show_user_profile(username):
 def hello_world():
 	author = "vama"
 	name = "Valle Magnusson"
-	return app.root_path
-	#return render_template('index.html', author=author, name=name)
+	#return app.root_path
+	return render_template('index.html', author=author, name=name)
 #def start():
 #	return "sidan fungerar", 200
 
