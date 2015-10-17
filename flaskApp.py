@@ -15,17 +15,6 @@ def compute_drag_free_landing(initial_velocity, initial_angle):
 def show_user_profile(username):
     # show the user profile for that user
     return 'User %s' % username
-#@app.route("/input", methods=['GET', 'PUT'])
-#def input():
-#	error = None
-#	if request.method == 'PUT':
-#		if valid_login(request.form['username'],request.form['password']):
-#			return log_the_user_in(request.form['username'])
-#		else:
-#			error = 'Invalid username/password'
-#	# the code below is executed if the request method
-#	# was GET or the credentials were invalid
-#	return render_template('login.html', error=error)
 
 @app.route('/index/', methods=['GET','POST'])
 def hello_world():
@@ -33,10 +22,12 @@ def hello_world():
 	name = "Valle Magnusson"
 	#return app.root_path
 	return render_template('index.html', author=author, name=name)
-	
+
 @app.route('/')
 def form():
-    return render_template('form_submit.html')
+	name=request.form['yourname']
+	email=request.form['youremail']
+    return render_template('form_submit.html', name=name, email=email)
 
 @app.route('/hello/', methods=['POST'])
 def hello():
