@@ -3,7 +3,7 @@ import sys
 
 
 def readFile(fileName):
-	theFile = open(fileName, "r")
+	theFile = open(fileName, "r").read()
 	print theFile
 	timeColumn = []
 	for line in theFile:
