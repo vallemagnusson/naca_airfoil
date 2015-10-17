@@ -19,8 +19,10 @@ def readFile(fileName):
 		lift = lines[x].strip().split()[1]
 		liftColumn.append(lift)
 		drag = lines[x].strip().split()[2]
-		timeColumn.append(drag)
-		print timeColumn
+		dragColumn.append(drag)
+	print timeColumn
+	print liftColumn
+	print dragColumn
 		#print lines[x].strip()
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
