@@ -14,8 +14,11 @@ import urllib2
 app = Flask(__name__)
 
 @app.route("/messaging", methods=['GET'])
-def start():
-	return "sidan fungerar", 200
+def compute_drag_free_landing(initial_velocity, initial_angle):
+	return landing_point
+
+#def start():
+#	return "sidan fungerar", 200
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", debug=True )
