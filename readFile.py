@@ -1,6 +1,6 @@
 import os
 import sys
-
+import matplotlib.pyplot as plt
 
 def readFile(fileName):
 	theFile = open(fileName, "r").read()
@@ -27,5 +27,7 @@ def readFile(fileName):
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
 	#print timeColumn
+	plt.plot(timeColumn, liftColumn)
+	plt.show()
 
 readFile("navier_stokes_solver/results/drag_ligt.m")
