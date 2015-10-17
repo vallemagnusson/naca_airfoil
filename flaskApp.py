@@ -27,7 +27,11 @@ def input():
 	# was GET or the credentials were invalid
 	return render_template('login.html', error=error)
 
-
+@app.route('/')
+def hello_world():
+    author = "vama"
+    name = "Valle Magnusson"
+    return render_template('index.html', author=author, name=name)
 #def start():
 #	return "sidan fungerar", 200
 
