@@ -29,9 +29,9 @@ def input():
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    author = "vama"
-    name = "Valle Magnusson"
-    return render_template('index.html', author=author, name=name)
+	author = "vama"
+	name = "Valle Magnusson"
+	return render_template('index.html', author=author, name=name)
 #def start():
 #	return "sidan fungerar", 200
 
