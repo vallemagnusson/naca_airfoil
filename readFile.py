@@ -13,7 +13,7 @@ def readFile(fileName):
 	#with open(fileName, "r") as f:
 		#content = f.readlines()
 		#print content
-	for x in range(1, len(lines))
+	for x in range(1, len(lines)):
 		print lines[x]
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
