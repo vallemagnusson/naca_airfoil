@@ -7,7 +7,7 @@ def readFile(fileName):
 	print theFile
 	timeColumn = []
 	for line in theFile:
-		timeColumn.append(line[2])
+		timeColumn.append(line[0])
 		print timeColumn
 
 readFile("navier_stokes_solver/results/drag_ligt.m")
