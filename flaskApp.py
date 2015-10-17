@@ -13,6 +13,7 @@ def form():
 
 @app.route('/runsh/', methods=['POST'])
 def runsh():
+	print 1, "start"
 	angle_start=request.form['angle_start']
 	angle_stop=request.form['angle_stop']
 	n_angles=request.form['n_angles']
