@@ -1,6 +1,6 @@
 #!flask/bin/python
 
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, url_for
 import sys
 import os
 import time
@@ -33,8 +33,15 @@ def hello_world():
 	name = "Valle Magnusson"
 	#return app.root_path
 	return render_template('index.html', author=author, name=name)
-#def start():
-#	return "sidan fungerar", 200
+
+def form():
+    return render_template('form_submit.html')
+    
+@app.route('/hello/', methods=['POST'])
+def hello():
+	name=request.form['yourname']
+	email=request.form['youremail']
+	return render_template('form_action.html', name=name, email=email)
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", debug=True )
