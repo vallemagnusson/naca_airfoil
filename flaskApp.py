@@ -23,7 +23,7 @@ def hello_world():
 	#return app.root_path
 	return render_template('index.html', author=author, name=name)
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def form():
 	name=request.form['yourname']
 	email=request.form['youremail']
