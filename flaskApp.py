@@ -5,7 +5,7 @@ import sys
 import os
 import time
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
 @app.route("/messaging", methods=['GET'])
 def compute_drag_free_landing(initial_velocity, initial_angle):
