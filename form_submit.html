@@ -9,20 +9,22 @@
                 <h1>POST request with Flask</h1>
             </div>
             <div id="content">
-                <form method="post" action="{{ url_for('form') }}">
-                    <label for="yourname">Please enter your name:</label>
-                    <input type="text" name="yourname" /><br />
-                    <label for="youremail">Please enter your email:</label>
-                    <input type="text" name="youremail" /><br />
+                <form method="post" action="{{ url_for('hello') }}">
+                    <label for="yourname">Please enter angle_start:</label>
+                    <input type="number" name="angle_start" /><br />
+                    <label for="youremail">Please enter angle_stop:</label>
+                    <input type="number" name="angle_stop" /><br />
+                    <label for="youremail">Please enter n_angles:</label>
+                    <input type="number" name="n_angles" /><br />
+                    <label for="youremail">Please enter n_nodes:</label>
+                    <input type="number" name="n_nodes" /><br />
+                    <label for="youremail">Please enter n_levels:</label>
+                    <input type="number" name="n_levels" /><br />
                     <input type="submit" />
                 </form>
             </div>
             <div class="title">
                 <h1>Flask code</h1>
-            </div>
-            <div>
-            {{ name }}
-            {{ email }}
             </div>
                 <code><pre>
 @app.route('/')

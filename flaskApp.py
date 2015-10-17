@@ -23,17 +23,26 @@ def hello_world():
 	#return app.root_path
 	return render_template('index.html', author=author, name=name)
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def form():
-	name=request.form['yourname']
-	email=request.form['youremail']
-	return render_template('form_submit.html', name=name, email=email)
+	return render_template('form_submit.html')
 
 @app.route('/hello/', methods=['POST'])
 def hello():
+	angle_start=request.form['angle_start']
+	angle_stop=request.form['angle_stop']
+	n_angles=request.form['n_angles']
+	n_nodes=request.form['n_nodes']
+	n_levels=request.form['n_levels']
+
 	name=request.form['yourname']
 	email=request.form['youremail']
-	return render_template('form_action.html', name=name, email=email)
+	return render_template('form_action.html', 
+		angle_start=angle_start, 
+		angle_stop=angle_stop,
+		n_angles=n_angles,
+		n_nodes=n_nodes,
+		n_levels=n_levels)
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", debug=True )
