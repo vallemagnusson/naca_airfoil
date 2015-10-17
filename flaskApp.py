@@ -2,7 +2,6 @@
 from celery import Celery
 from celery import group
 from flask import Flask, jsonify
-from tasks import getTweets
 import subprocess
 import sys
 import os
