@@ -27,7 +27,7 @@ def hello_world():
 def form():
 	name=request.form['yourname']
 	email=request.form['youremail']
-    return render_template('form_submit.html', name=name, email=email)
+	return render_template('form_submit.html')
 
 @app.route('/hello/', methods=['POST'])
 def hello():
