@@ -34,9 +34,6 @@ def hello():
 	n_angles=request.form['n_angles']
 	n_nodes=request.form['n_nodes']
 	n_levels=request.form['n_levels']
-
-	name=request.form['yourname']
-	email=request.form['youremail']
 	return render_template('form_action.html', 
 		angle_start=angle_start, 
 		angle_stop=angle_stop,
