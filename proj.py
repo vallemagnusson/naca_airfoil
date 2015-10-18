@@ -19,8 +19,8 @@ def convertFile(fileName, mshFile):
 	if fileName == "r0a0n200.msh":
 		newFile = open(fileName, "w")
 		newFile.write(mshFile)
-		newFile.close()
 		print newFile.read()
+		newFile.close()
 	return "dictionary_all"
 
 @app.task
