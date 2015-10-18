@@ -39,8 +39,8 @@ def runsh():
 	content = sorted(os.listdir(fileLocation))
 
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
-
-
+	result = response.apply_async()
+	result.get()
 	#for i in range(len(content)):
 	#	print content[i]
 	#	fileContent = open(fileLocation+content[i], "r").read()
