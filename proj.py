@@ -53,7 +53,7 @@ def convertFile(fileName, mshFile):
 		#		'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
 		#		'cd ..']
 		#subprocess.Popen(args)
-		os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" +xmlFileName)
+		os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" +xmlFileName + " &> /dev/null &")
 		os.chdir("/home/ubuntu/naca_airfoil/")
 		##########################################
 		######### Get drag_ligt.m values #########
