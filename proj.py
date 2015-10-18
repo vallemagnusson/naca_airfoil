@@ -33,8 +33,9 @@ def convertFile(fileName, mshFile):
 		##########################################
 		########## Cleaning up dir ###########
 		##########################################
-		#os.mkdir(fileNameWithoutExtension)
-		#os.copyfile("airfoil", fileNameWithoutExtension+"/airfoil")
+		os.mkdir(fileNameWithoutExtension)
+		os.copyfile("airfoil", fileNameWithoutExtension+"/airfoil")
+		os.chdir(fileNameWithoutExtension)
 		#os.rename(fileName, fileNameWithoutExtension+"/"+fileName)
 		#os.rename(xmlFileName, fileNameWithoutExtension+"/"+xmlFileName)
 
@@ -45,13 +46,13 @@ def convertFile(fileName, mshFile):
 		visc = 0.0001
 		speed = 10.
 		T = 1
-		args = ['mkdir /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
-				'cp -a /home/ubuntu/naca_airfoil/airfoil /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension + '/airfoil',
-				'cd /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
-				'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
-				'cd ..']
-		subprocess.Popen(args)
-		#os.system("./"+ fileNameWithoutExtension +"/airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
+		#args = ['mkdir /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
+		#		'cp -a /home/ubuntu/naca_airfoil/airfoil /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension + '/airfoil',
+		#		'cd /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
+		#		'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
+		#		'cd ..']
+		#subprocess.Popen(args)
+		os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
 		##########################################
 		######### Get drag_ligt.m values #########
 		##########################################
