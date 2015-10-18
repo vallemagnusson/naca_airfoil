@@ -48,7 +48,7 @@ def convertFile(fileName, mshFile):
 		args = ['mkdir ' + fileNameWithoutExtension,
 				'cp -a airfoil ' + fileNameWithoutExtension + '/airfoil',
 				'cd ' + fileNameWithoutExtension,
-				"./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName,
+				'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
 				'cd ..']
 		subprocess.Popen(args)
 		#os.system("./"+ fileNameWithoutExtension +"/airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
