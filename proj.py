@@ -14,6 +14,7 @@ app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.12
 
 @app.task
 def convertFile(fileName, mshFile):
+	print fileName
 	if fileName == "r0a0n200.msh":
 		newFile = open(fileName, "r")
 		newFile = mshFile.write()

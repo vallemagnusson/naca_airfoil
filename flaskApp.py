@@ -37,6 +37,7 @@ def runsh():
 	fileLocation = appLocation + "/msh/"
 	content = sorted(os.listdir(fileLocation))
 	for i in range(len(content)):
+		print content[i]
 		convertFile(content[i], open(fileLocation+content[i], "r").read())
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
