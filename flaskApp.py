@@ -13,13 +13,16 @@ def form():
 
 @app.route('/runsh/', methods=['POST'])
 def runsh():
-	print 1, "start"
 	angle_start=request.form['angle_start']
 	angle_stop=request.form['angle_stop']
 	n_angles=request.form['n_angles']
 	n_nodes=request.form['n_nodes']
 	n_levels=request.form['n_levels']
+	print 1, "- - - - - - - - Run start - - - - - - - -"
+	start_time_to_make_msh_file = time.time()
 	os.system("./run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
+	stop_time_to_make_msh_file = time.time()
+	print 2, stop_time_to_make_msh_file - start_time_to_make_msh_file
 	return render_template('runsh.html', angle_start=angle_start, angle_stop=angle_stop, n_angles=n_angles, n_nodes=n_nodes, n_levels=n_levels)
 
 
