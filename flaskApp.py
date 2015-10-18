@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request, render_template, url_for
 import sys
 import os
 import time
-from tasks import convertFile
+from proj import convertFile
 
 app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
@@ -39,7 +39,7 @@ def runsh():
 	for i in range(len(content)):
 		print content[i]
 		fileContent = open(fileLocation+content[i], "r").read()
-		print fileContent
+		#print fileContent
 		convertFile(content[i], fileContent)
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
