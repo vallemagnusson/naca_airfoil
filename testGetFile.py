@@ -7,6 +7,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def test():
-	print app.root_path
+	appLocation = app.root_path
+	fileLocation = appLocation + "/msh"
+	print fileLocation
 
 test()
