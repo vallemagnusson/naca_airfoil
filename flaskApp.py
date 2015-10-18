@@ -1,6 +1,7 @@
 #!flask/bin/python
 
 from flask import Flask, jsonify, request, render_template, url_for
+from celery import group
 import sys
 import os
 import time
