@@ -13,7 +13,7 @@ import urllib2
 app = Celery('tasks', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.120:5672/app2')
 
 @app.task
-def getTweets(tweetFileList):
+def convertFile(tweetFileList):
 	
 	return "dictionary_all"
 

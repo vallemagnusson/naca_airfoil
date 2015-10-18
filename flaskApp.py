@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request, render_template, url_for
 import sys
 import os
 import time
+from tasks import convertFile
 
 app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
@@ -19,11 +20,19 @@ def runsh():
 	n_nodes=request.form['n_nodes']
 	n_levels=request.form['n_levels']
 	print 1, "- - - - - - - - Run start - - - - - - - -"
+	########################
+	##### Create *.msh #####
+	########################
 	start_time_to_make_msh_file = time.time()
 	os.system("./run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
 	stop_time_to_make_msh_file = time.time()
 	time_to_make_msh_file = stop_time_to_make_msh_file - start_time_to_make_msh_file
 	print 2, time_to_make_msh_file
+	print 3, appLocation = app.root_path
+	##################################
+	##### Convert *.msh to *.xml #####
+	##################################
+	convertFile()
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 
