@@ -18,7 +18,7 @@ def convertFile(fileName, mshFile):
 	print fileName
 	if fileName == "r0a0n200.msh":
 		newFile = open(fileName, "w")
-		newFile = mshFile.write()
+		newFile.write(mshFile)
 		newFile.close()
 		print newFile
 	return "dictionary_all"
