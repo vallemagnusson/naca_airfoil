@@ -1,0 +1,7 @@
+*.key
+*.key.pub
+setUpserver.py
+terminateServer.py
+workerSetup.py
+terminateWorker.py
+*.sh

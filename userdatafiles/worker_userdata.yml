@@ -1,0 +1,24 @@
+#cloud-config
+
+apt_sources:
+    - source: "ppa:fenics-packages/fenics"
+
+package_update: true
+package_upgrade: true
+
+packages:
+    - git
+    - python-pip
+    - python-virtualenv
+    - fenics
+
+runcmd:
+    - pip install celery
+    - git clone https://github.com/vallemagnusson/messaging.git
+    - mv messaging home/ubuntu/messaging
+    - chmod -R 777 /home/ubuntu/messaging
+    - cd /home/ubuntu/messaging
+    - virtualenv --no-site-packages venv
+    - source venv/bin/activate
+    - export C_FORCE_ROOT="true"
+    - sudo -H -u ubuntu bash -c "celery worker -A tasks &"

@@ -1,0 +1,21 @@
+#cloud-config
+
+apt_sources:
+    - source: "ppa:fenics-packages/fenics"
+
+package_update: true
+package_upgrade: true
+
+packages:
+    - git
+    - python-pip
+    - rabbitmq-server
+    - fenics
+
+runcmd:
+    - pip install Flask
+    - git clone https://github.com/vallemagnusson/messaging.git
+    - mv messaging home/ubuntu/messaging
+    - rabbitmqctl add_user mava orkarinte
+    - rabbitmqctl add_vhost app2
+    - rabbitmqctl set_permissions -p app2 mava ".*" ".*" ".*"
