@@ -36,11 +36,16 @@ def runsh():
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh/"
 	content = sorted(os.listdir(fileLocation))
-	for i in range(len(content)):
-		print content[i]
-		fileContent = open(fileLocation+content[i], "r").read()
-		#print fileContent
-		convertFile(content[i], fileContent)
+
+	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
+
+
+	#for i in range(len(content)):
+	#	print content[i]
+	#	fileContent = open(fileLocation+content[i], "r").read()
+	#	#print fileContent
+	#	response = group()
+	#	convertFile(content[i], fileContent)
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 
