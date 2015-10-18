@@ -19,49 +19,49 @@ def convertFile(fileName, mshFile):
 	##########################################
 	##### Conver file from *msh to *.xml #####
 	##########################################
-	if fileName == "r0a0n200.msh":
-		newFile = open(fileName, "w")
-		newFile.write(mshFile)
-		newFile = open(fileName, "r")
-		newFile.close()
-		fileNameWithoutExtension = os.path.splitext(fileName)[0]
-		xmlFileName = fileNameWithoutExtension + ".xml"
-		print fileNameWithoutExtension
-		#print newFile
-		os.system("dolfin-convert " + fileName + " " + xmlFileName)
-		#print newFile.read()
-		##########################################
-		########## Cleaning up dir ###########
-		##########################################
-		os.mkdir(fileNameWithoutExtension)
-		os.system('cp -a airfoil r0a0n200')
-		#shutil.copy("airfoil", fileNameWithoutExtension)
-		os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension)
-		#os.rename(fileName, fileNameWithoutExtension+"/"+fileName)
-		#os.rename(xmlFileName, fileNameWithoutExtension+"/"+xmlFileName)
+	#if fileName == "r0a0n200.msh":
+	newFile = open(fileName, "w")
+	newFile.write(mshFile)
+	newFile = open(fileName, "r")
+	newFile.close()
+	fileNameWithoutExtension = os.path.splitext(fileName)[0]
+	xmlFileName = fileNameWithoutExtension + ".xml"
+	print fileNameWithoutExtension
+	#print newFile
+	os.system("dolfin-convert " + fileName + " " + xmlFileName)
+	#print newFile.read()
+	##########################################
+	########## Cleaning up dir ###########
+	##########################################
+	os.mkdir(fileNameWithoutExtension)
+	os.system('cp -a airfoil r0a0n200')
+	#shutil.copy("airfoil", fileNameWithoutExtension)
+	os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension)
+	#os.rename(fileName, fileNameWithoutExtension+"/"+fileName)
+	#os.rename(xmlFileName, fileNameWithoutExtension+"/"+xmlFileName)
 
-		##########################################
-		########## Run airfoil on file ###########
-		##########################################
-		num = 10
-		visc = 0.0001
-		speed = 10.
-		T = 1
-		#args = ['mkdir /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
-		#		'cp -a /home/ubuntu/naca_airfoil/airfoil /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension + '/airfoil',
-		#		'cd /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
-		#		'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
-		#		'cd ..']
-		#subprocess.Popen(args)
-		os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" +xmlFileName)
-		os.chdir("/home/ubuntu/naca_airfoil/")
-		##########################################
-		######### Get drag_ligt.m values #########
-		##########################################
-		resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
-		#shutil.rmtree(fileNameWithoutExtension)
-		os.system("rm -rf " + fileNameWithoutExtension + "*")
-		return resultLists
+	##########################################
+	########## Run airfoil on file ###########
+	##########################################
+	num = 10
+	visc = 0.0001
+	speed = 10.
+	T = 1
+	#args = ['mkdir /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
+	#		'cp -a /home/ubuntu/naca_airfoil/airfoil /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension + '/airfoil',
+	#		'cd /home/ubuntu/naca_airfoil/' + fileNameWithoutExtension,
+	#		'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
+	#		'cd ..']
+	#subprocess.Popen(args)
+	os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" +xmlFileName)
+	os.chdir("/home/ubuntu/naca_airfoil/")
+	##########################################
+	######### Get drag_ligt.m values #########
+	##########################################
+	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
+	#shutil.rmtree(fileNameWithoutExtension)
+	os.system("rm -rf " + fileNameWithoutExtension + "*")
+	return resultLists
 
 @app.task
 def readFile(fileName):

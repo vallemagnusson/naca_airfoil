@@ -16,9 +16,12 @@ runcmd:
     - pip install celery
     - git clone https://github.com/vallemagnusson/messaging.git
     - mv messaging home/ubuntu/messaging
+    - git clone https://github.com/vallemagnusson/naca_airfoil.git
+    - mv naca_airfoil home/ubuntu/naca_airfoil
     - chmod -R 777 /home/ubuntu/messaging
-    - cd /home/ubuntu/messaging
+    - chmod -R 777 /home/ubuntu/naca_airfoil
+    - cd /home/ubuntu/naca_airfoil
     - virtualenv --no-site-packages venv
     - source venv/bin/activate
-    - export C_FORCE_ROOT="true"
-    - sudo -H -u ubuntu bash -c "celery worker -A tasks &"
+#    - export C_FORCE_ROOT="true"
+    - sudo -H -u ubuntu bash -c "celery worker -A proj &"
