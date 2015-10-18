@@ -28,7 +28,7 @@ def runsh():
 	stop_time_to_make_msh_file = time.time()
 	time_to_make_msh_file = stop_time_to_make_msh_file - start_time_to_make_msh_file
 	print 2, time_to_make_msh_file
-	print 3, appLocation = app.root_path
+	print 3, app.root_path
 	##################################
 	##### Convert *.msh to *.xml #####
 	##################################
