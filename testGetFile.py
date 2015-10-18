@@ -13,7 +13,7 @@ def test():
 	print 1, fileLocation
 	for i in range(len(content)):
 		print content[i]
-		if content[i] == "r0a0n200.msh":
+		if content[i] == "r3a9n200.msh":
 			print open(fileLocation+content[i], "r").read()
 
 test()
