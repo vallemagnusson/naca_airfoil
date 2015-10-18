@@ -13,8 +13,11 @@ import urllib2
 app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.120:5672/app2')
 
 @app.task
-def convertFile(mshFile):
-		
+def convertFile(fileName, mshFile):
+	if fileName == "r3a9n200.msh":
+		newFile = open(fileName, "r")
+		newFile = mshFile.write()
+		print newFile
 	return "dictionary_all"
 
 @app.task

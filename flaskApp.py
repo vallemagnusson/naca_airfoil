@@ -32,7 +32,10 @@ def runsh():
 	##################################
 	##### Convert *.msh to *.xml #####
 	##################################
-	#convertFile()
+	appLocation = app.root_path
+	fileLocation = appLocation + "/msh/"
+	content = sorted(os.listdir(fileLocation))
+	convertFile(content[i], open(fileLocation+content[i], "r").read())
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 
