@@ -38,7 +38,9 @@ def runsh():
 	content = sorted(os.listdir(fileLocation))
 	for i in range(len(content)):
 		print content[i]
-		convertFile(content[i], open(fileLocation+content[i], "r").read())
+		fileContent = open(fileLocation+content[i], "r").read()
+		print fileContent
+		convertFile(content[i], fileContent)
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 

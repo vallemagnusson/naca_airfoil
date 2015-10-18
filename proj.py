@@ -14,10 +14,12 @@ app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.12
 
 @app.task
 def convertFile(fileName, mshFile):
+	print "test"
 	print fileName
 	if fileName == "r0a0n200.msh":
-		newFile = open(fileName, "r")
+		newFile = open(fileName, "w")
 		newFile = mshFile.write()
+		newFile.close()
 		print newFile
 	return "dictionary_all"
 
