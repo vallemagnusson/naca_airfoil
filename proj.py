@@ -58,7 +58,7 @@ def convertFile(fileName, mshFile):
 		##########################################
 		######### Get drag_ligt.m values #########
 		##########################################
-		resultLists = readFile(os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension+"/results/drag_ligt.m")
+		resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
 		shutil.rmtree(fileNameWithoutExtension)
 		return resultLists
 
