@@ -1,8 +1,8 @@
 import os
 import sys
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
+#import matplotlib.pyplot as plt
+#import matplotlib
 
 
 def readFile(fileName):
@@ -30,8 +30,8 @@ def readFile(fileName):
 	#for line in theFile.split():
 	#	timeColumn.append(line[0])
 	#print timeColumn
-	matplotlib.use('Agg')
-	plt.plot(timeColumn, liftColumn)
-	plt.show()
+	#matplotlib.use('Agg')
+	#plt.plot(timeColumn, liftColumn)
+	#plt.show()
 
 readFile("navier_stokes_solver/results/drag_ligt.m")
