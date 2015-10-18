@@ -3,12 +3,13 @@
 import os
 import json
 import time
-#import swiftclient.client
 import sys
 import time
+import shutil
 from celery import Celery
 from collections import Counter
 import urllib2
+import subprocess
 
 app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.120:5672/app2')
 
@@ -30,18 +31,32 @@ def convertFile(fileName, mshFile):
 		os.system("dolfin-convert " + fileName + " " + xmlFileName)
 		#print newFile.read()
 		##########################################
+		########## Cleaning up dir ###########
+		##########################################
+		os.mkdir(fileNameWithoutExtension)
+		os.copyfile("airfoil", fileNameWithoutExtension+"/airfoil")
+		#os.rename(fileName, fileNameWithoutExtension+"/"+fileName)
+		#os.rename(xmlFileName, fileNameWithoutExtension+"/"+xmlFileName)
+
+		##########################################
 		########## Run airfoil on file ###########
 		##########################################
 		num = 10
 		visc = 0.0001
 		speed = 10.
 		T = 1
-		os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
+		args = ['mkdir ' + fileNameWithoutExtension,
+				'cp -a airfoil ' + fileNameWithoutExtension + '/airfoil',
+				'cd ' + fileNameWithoutExtension,
+				"./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName,
+				'cd ..']
+		subprocess.Popen(args)
+		#os.system("./"+ fileNameWithoutExtension +"/airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
 		##########################################
 		######### Get drag_ligt.m values #########
 		##########################################
-		resultLists = readFile("results/drag_ligt.m")
-		
+		resultLists = readFile(fileNameWithoutExtension+"/results/drag_ligt.m")
+		shutil.rmtree(fileNameWithoutExtension)
 		return resultLists
 
 @app.task
