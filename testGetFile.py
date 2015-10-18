@@ -9,6 +9,7 @@ app = Flask(__name__)
 def test():
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh"
-	print fileLocation
+	print 1, fileLocation
+	print 2, os.listdir(fileLocation)
 
 test()
