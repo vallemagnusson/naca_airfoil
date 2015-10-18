@@ -9,7 +9,7 @@ app = Flask(__name__)
 def test():
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh"
-	content = os.listdir(fileLocation)
+	content = os.listdir(fileLocation).sort
 	print 1, fileLocation
 	for i in range(len(content)):
 		print content[i]
