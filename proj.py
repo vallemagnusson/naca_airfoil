@@ -20,7 +20,7 @@ def convertFile(fileName, mshFile):
 		newFile = open(fileName, "w")
 		newFile.write(mshFile)
 		newFile.close()
-		print newFile
+		print newFile.read()
 	return "dictionary_all"
 
 @app.task
