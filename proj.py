@@ -45,18 +45,18 @@ def convertFile(fileName, mshFile):
 		visc = 0.0001
 		speed = 10.
 		T = 1
-		args = ['mkdir ' + fileNameWithoutExtension,
-				'cp -a airfoil ' + fileNameWithoutExtension + '/airfoil',
-				'cd ' + fileNameWithoutExtension,
-				'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
-				'cd ..']
+		args = ['mkdir ' + fileNameWithoutExtension]#,
+		#		'cp -a airfoil ' + fileNameWithoutExtension + '/airfoil',
+		#		'cd ' + fileNameWithoutExtension,
+		#		'./airfoil ' + str(num) + ' ' + str(visc) + ' ' + str(speed) + ' ' + str(T) + ' ' + xmlFileName,
+		#		'cd ..']
 		subprocess.Popen(args)
 		#os.system("./"+ fileNameWithoutExtension +"/airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
 		##########################################
 		######### Get drag_ligt.m values #########
 		##########################################
-		resultLists = readFile(fileNameWithoutExtension+"/results/drag_ligt.m")
-		shutil.rmtree(fileNameWithoutExtension)
+		#resultLists = readFile(fileNameWithoutExtension+"/results/drag_ligt.m")
+		#shutil.rmtree(fileNameWithoutExtension)
 		return resultLists
 
 @app.task
