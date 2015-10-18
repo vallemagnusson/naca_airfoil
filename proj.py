@@ -34,7 +34,8 @@ def convertFile(fileName, mshFile):
 		########## Cleaning up dir ###########
 		##########################################
 		os.mkdir(fileNameWithoutExtension)
-		shutil.copy("airfoil", fileNameWithoutExtension)
+		os.system('cp -a airfoil r0a0n200')
+		#shutil.copy("airfoil", fileNameWithoutExtension)
 		os.chdir(fileNameWithoutExtension)
 		#os.rename(fileName, fileNameWithoutExtension+"/"+fileName)
 		#os.rename(xmlFileName, fileNameWithoutExtension+"/"+xmlFileName)
