@@ -47,6 +47,7 @@ def runsh():
 	#	#print fileContent
 	#	response = group()
 	#	convertFile(content[i], fileContent)
+	print result
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 

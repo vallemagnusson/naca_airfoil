@@ -15,7 +15,9 @@ app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.12
 @app.task
 def convertFile(fileName, mshFile):
 	print "Started to process file: " + str(fileName)
-	#print fileName
+	##########################################
+	##### Conver file from *msh to *.xml #####
+	##########################################
 	if fileName == "r0a0n200.msh":
 		newFile = open(fileName, "w")
 		newFile.write(mshFile)
@@ -27,22 +29,44 @@ def convertFile(fileName, mshFile):
 		print newFile
 		os.system("dolfin-convert " + fileName + " " + xmlFileName)
 		#print newFile.read()
-		
-	return "dictionary_all"
+		##########################################
+		########## Run airfoil on file ###########
+		##########################################
+		num = 10
+		visc = 0.0001
+		speed = 10.
+		T = 1
+		os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + xmlFileName)
+		##########################################
+		######### Get drag_ligt.m values #########
+		##########################################
+		result = readFile(app.root_path + "results/drag_ligt.m")
+	return result
 
 @app.task
-def readJSON(tweet_file):
-	return "dictionary"
+def readFile(fileName):
+	theFile = open(fileName, "r").read()
+	timeColumn = []
+	liftColumn = []
+	dragColumn = []
+	lines = open(fileName, "r").readlines()
+	for x in range(1, len(lines)):
+		time = lines[x].strip().split()[0]
+		timeColumn.append(time)
+		lift = lines[x].strip().split()[1]
+		liftColumn.append(lift)
+		drag = lines[x].strip().split()[2]
+		dragColumn.append(drag)
+	resultList = []
+	resultList.append(timeColumn)
+	resultList.append(liftColumn)
+	resultList.append(dragColumn)
+	return resultList
 
 
-#################################################################
-#mshDir = os.listdir("msh")
-#for filename in mshDir:
-#	filenameNoExtension = os.path.splitext(filename)[0]
-#	oldFile = "msh/"+str(filename)
-#	newFile = "msh/" + filenameNoExtension + ".xml"
-#	os.system("dolfin-convert " + oldFile + " " + newFile)
-#
 
 
-#dolfin-convert cylinder6.msh out.xml
+
+
+
+
