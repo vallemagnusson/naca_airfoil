@@ -32,7 +32,7 @@ def runsh():
 	##################################
 	##### Convert *.msh to *.xml #####
 	##################################
-	convertFile()
+	#convertFile()
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 
