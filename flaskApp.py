@@ -50,7 +50,7 @@ def runsh():
 	#	convertFile(content[i], fileContent)
 	for t in result.get():
 		print t
-	subprocess.call(["rm", "-rf", "*.msh"], cwd="msh")
+	subprocess.call(["rm", "-rf", "*.msh"], cwd="msh/")
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 
