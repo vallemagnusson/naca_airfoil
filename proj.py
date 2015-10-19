@@ -33,7 +33,8 @@ def convertFile(fileName, mshFile):
 	##########################################
 	########## Cleaning up dir ###########
 	##########################################
-	os.mkdir(fileNameWithoutExtension)
+	#os.mkdir(fileNameWithoutExtension)
+	subprocess.call(["mkdir", fileNameWithoutExtension])
 	os.system('cp -a airfoil ' + fileNameWithoutExtension)
 	os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension)
 	##########################################
