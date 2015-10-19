@@ -36,12 +36,17 @@ def runsh():
 	##################################
 
 	appLocation = app.root_path
+	print 4, "Fel"
 	fileLocation = appLocation + "/msh/"
+	print 5, "Fel"
 	content = sorted(os.listdir(fileLocation))
-
+	print 6, "Fel"
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
+	print 7, "Fel"
 	result = response.apply_async()
+	print 8, "Fel"
 	result.get()
+	print 9, "Fel"
 	#for i in range(len(content)):
 	#	print content[i]
 	#	fileContent = open(fileLocation+content[i], "r").read()

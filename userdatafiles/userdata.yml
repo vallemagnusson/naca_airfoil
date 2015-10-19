@@ -11,6 +11,8 @@ packages:
     - python-pip
     - rabbitmq-server
 #    - fenics
+    - gmsh
+    - python-numpy
 
 runcmd:
     - pip install Flask
