@@ -43,5 +43,6 @@ def plot_file(filename, data):
 	plt.ylabel('Force')
 	plt.title(filename)
 	plt.yscale('log')
-	plt.savefig(os.path.splitext(filename)[0] + '.png')
+	image = open(os.path.splitext(filename)[0] + '.png', "w")
+	plt.savefig(image, format = "png")
 
