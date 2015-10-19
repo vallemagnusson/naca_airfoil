@@ -46,7 +46,7 @@ def convertFile(fileName, mshFile):
 	visc = 0.0001
 	speed = 10.
 	T = 1
-	subprocess.call([".airfoil", num, visc, speed, T, xmlFileName], cwd=fileNameWithoutExtension)
+	subprocess.call(["./airfoil", num, visc, speed, T, xmlFileName], cwd=fileNameWithoutExtension)
 	#os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" + xmlFileName + " &> /dev/null")
 	#os.chdir("/home/ubuntu/naca_airfoil/")
 	##########################################
