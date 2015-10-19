@@ -28,7 +28,8 @@ def convertFile(fileName, mshFile):
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
 	#print newFile
-	os.system("dolfin-convert " + fileName + " " + xmlFileName)
+	#os.system("dolfin-convert " + fileName + " " + xmlFileName)
+	subprocess.call(["dolfin-convert", fileName, xmlFileName])
 	#print newFile.read()
 	##########################################
 	########## Cleaning up dir ###########
