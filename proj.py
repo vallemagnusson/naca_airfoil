@@ -19,7 +19,6 @@ def convertFile(fileName, mshFile):
 	##########################################
 	##### Conver file from *msh to *.xml #####
 	##########################################
-	#if fileName == "r0a0n200.msh":
 	newFile = open(fileName, "w")
 	newFile.write(mshFile)
 	newFile = open(fileName, "r")
@@ -27,18 +26,12 @@ def convertFile(fileName, mshFile):
 	fileNameWithoutExtension = os.path.splitext(fileName)[0]
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
-	#print newFile
-	#os.system("dolfin-convert " + fileName + " " + xmlFileName)
 	subprocess.call(["dolfin-convert", fileName, xmlFileName])
-	#print newFile.read()
 	##########################################
-	########## Cleaning up dir ###########
+	########## Copy airfoil to dir ###########
 	##########################################
-	#os.mkdir(fileNameWithoutExtension)
 	subprocess.call(["mkdir", fileNameWithoutExtension])
 	subprocess.call(["cp", "-a", "airfoil", fileNameWithoutExtension])
-	#os.system('cp -a airfoil ' + fileNameWithoutExtension)
-	#os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension)
 
 	##########################################
 	########## Run airfoil on file ###########
@@ -48,13 +41,10 @@ def convertFile(fileName, mshFile):
 	speed = str(10.)
 	T = str(1)
 	subprocess.call(["./airfoil", num, visc, speed, T, "../" + xmlFileName + " > output.log"], cwd=fileNameWithoutExtension+"/")
-	#os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" + xmlFileName + " &> /dev/null")
-	#os.chdir("/home/ubuntu/naca_airfoil/")
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
 	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
-	#shutil.rmtree(fileNameWithoutExtension)
 	os.system("rm -rf " + fileNameWithoutExtension + "*")
 	return (fileName, resultLists)
 

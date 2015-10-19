@@ -13,7 +13,7 @@ app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
 @app.route('/')
 def form():
-	return render_template('form_submit.html')
+	return render_template('site/form_submit.html')
 
 @app.route('/runsh/', methods=['POST'])
 def runsh():
@@ -26,44 +26,33 @@ def runsh():
 	########################
 	##### Create *.msh #####
 	########################
-	start_time_to_make_msh_file = time.time()
+	time_1 = time.time()
 	subprocess.call(["./run.sh", angle_start, angle_stop, n_angles, n_nodes, n_levels])
-	#os.system("./run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
-	stop_time_to_make_msh_file = time.time()
-	time_to_make_msh_file = stop_time_to_make_msh_file - start_time_to_make_msh_file
-	print 2, time_to_make_msh_file
-	#print 3, app.root_path
+	time_2 = time.time()
+	print 2, time_2 - time_1
 	#############################################
 	##### Convert *.msh to *.xml + lite mer #####
 	#############################################
-
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh/"
 	content = sorted(os.listdir(fileLocation))
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
 	result = response.apply_async()
 	result.get()
-	#print 9, "Fel"
-	#for i in range(len(content)):
-	#	print content[i]
-	#	fileContent = open(fileLocation+content[i], "r").read()
-	#	#print fileContent
-	#	response = group()
-	#	convertFile(content[i], fileContent)
+	time_3 = time.time()
+	print 3, time_3 - time_2
 	for t in result.get():
 		(fileNamePlot, data) = t
 		plot_file(fileNamePlot, data)
-	#subprocess.call(["rm", "-rf", "*"], cwd="msh/")
 	os.system("rm -rf  msh/*")
 	os.system("rm -rf  geo/*")
 
-	return render_template('runsh.html', 
+	return render_template('site/runsh.html', 
 							angle_start=angle_start, 
 							angle_stop=angle_stop, 
 							n_angles=n_angles, 
 							n_nodes=n_nodes, 
 							n_levels=n_levels)
-
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", debug=True )
