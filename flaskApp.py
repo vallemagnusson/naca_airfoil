@@ -32,10 +32,10 @@ def runsh():
 	stop_time_to_make_msh_file = time.time()
 	time_to_make_msh_file = stop_time_to_make_msh_file - start_time_to_make_msh_file
 	print 2, time_to_make_msh_file
-	print 3, app.root_path
-	##################################
-	##### Convert *.msh to *.xml #####
-	##################################
+	#print 3, app.root_path
+	#############################################
+	##### Convert *.msh to *.xml + lite mer #####
+	#############################################
 
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh/"
@@ -43,7 +43,7 @@ def runsh():
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
 	result = response.apply_async()
 	result.get()
-	print 9, "Fel"
+	#print 9, "Fel"
 	#for i in range(len(content)):
 	#	print content[i]
 	#	fileContent = open(fileLocation+content[i], "r").read()
