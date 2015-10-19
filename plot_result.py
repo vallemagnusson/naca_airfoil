@@ -11,6 +11,7 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib
 import os.path
+matplotlib.use('Agg')
 
 ###############################################################################
 # Takes a .m file that is created by the airfoil binary and creates a plot 
@@ -33,7 +34,6 @@ def plot_file(filename, data):
 	#	time.append(elemlist[0])
 	#	drag.append(elemlist[1])
 	#	lift.append(elemlist[2])
-	matplotlib.use('Agg')
 	plt.gca().set_color_cycle(['blue', 'red'])
 	plt.plot(time, drag)
 	plt.plot(time, lift)
