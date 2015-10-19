@@ -10,7 +10,7 @@ packages:
     - git
     - python-pip
     - rabbitmq-server
-    - fenics
+#    - fenics
     - gmsh
     - python-numpy
 
@@ -24,6 +24,8 @@ runcmd:
     - mv naca_airfoil home/ubuntu/naca_airfoil
     - chmod -R 777 /home/ubuntu/messaging
     - chmod -R 777 /home/ubuntu/naca_airfoil
+    - mkdir /home/ubuntu/naca_airfoil/msh
+    - mkdir /home/ubuntu/naca_airfoil/geo
     - rabbitmqctl add_user mava orkarinte
     - rabbitmqctl add_vhost app2
     - rabbitmqctl set_permissions -p app2 mava ".*" ".*" ".*"
