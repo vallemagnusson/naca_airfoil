@@ -52,7 +52,7 @@ def runsh():
 	#	convertFile(content[i], fileContent)
 	for t in result.get():
 		(fileNamePlot, data) = t
-		#plot_file(fileNamePlot, data)
+		plot_file(fileNamePlot, data)
 	subprocess.call(["rm", "-rf", "msh/*.msh"])
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
