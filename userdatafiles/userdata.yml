@@ -1,7 +1,7 @@
 #cloud-config
 
-apt_sources:
-    - source: "ppa:fenics-packages/fenics"
+#apt_sources:
+#    - source: "ppa:fenics-packages/fenics"
 
 package_update: true
 package_upgrade: true
@@ -10,12 +10,21 @@ packages:
     - git
     - python-pip
     - rabbitmq-server
-    - fenics
+#    - fenics
 
 runcmd:
     - pip install Flask
+    - pip install celery
+    - pip install flower
     - git clone https://github.com/vallemagnusson/messaging.git
     - mv messaging home/ubuntu/messaging
+    - git clone https://github.com/vallemagnusson/naca_airfoil.git
+    - mv naca_airfoil home/ubuntu/naca_airfoil
+    - chmod -R 777 /home/ubuntu/messaging
+    - chmod -R 777 /home/ubuntu/naca_airfoil
     - rabbitmqctl add_user mava orkarinte
     - rabbitmqctl add_vhost app2
     - rabbitmqctl set_permissions -p app2 mava ".*" ".*" ".*"
+    - cd /home/ubuntu/naca_airfoil
+    - sudo -H -u ubuntu bash -c "celery flower -A proj &"
+    - sudo -H -u ubuntu bash -c "python flaskApp.py &" 

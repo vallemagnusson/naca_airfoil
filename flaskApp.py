@@ -7,6 +7,7 @@ import os
 import time
 from proj import convertFile
 import subprocess
+import numpy
 
 app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
