@@ -55,6 +55,7 @@ def runsh():
 		plot_file(fileNamePlot, data)
 	#subprocess.call(["rm", "-rf", "*"], cwd="msh/")
 	os.system("rm -rf  msh/*")
+	os.system("rm -rf  geo/*")
 
 	return render_template('runsh.html', 
 							angle_start=angle_start, 
