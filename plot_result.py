@@ -18,20 +18,20 @@ import os.path
 #	filename: Path o the file
 ###############################################################################
 def plot_file(filename, data):
-	f = open("drag_ligt.m", "r")
-	s = f.read().split('\n')
+	#f = open("drag_ligt.m", "r")
+	#s = f.read().split('\n')
 	time = data[0]
 	lift = data[1]
 	drag = data[2]
-	for line in s[1:]:
-		l = line.split(' ')
-		elemlist = []
-		for element in l:
-			if not element == "":
-				elemlist.append(element)
-		time.append(elemlist[0])
-		drag.append(elemlist[1])
-		lift.append(elemlist[2])
+	#for line in s[1:]:
+	#	l = line.split(' ')
+	#	elemlist = []
+	#	for element in l:
+	#		if not element == "":
+	#			elemlist.append(element)
+	#	time.append(elemlist[0])
+	#	drag.append(elemlist[1])
+	#	lift.append(elemlist[2])
 
 	plt.gca().set_color_cycle(['blue', 'red'])
 	plt.plot(time, drag)
