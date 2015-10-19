@@ -27,7 +27,8 @@ def runsh():
 	##### Create *.msh #####
 	########################
 	start_time_to_make_msh_file = time.time()
-	os.system("./run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
+	subprocess.call(["./run.sh", angle_start, angle_stop, n_angles, n_nodes, n_levels])
+	#os.system("./run.sh " + angle_start + " " + angle_stop + " " + n_angles + " " + n_nodes + " " + n_levels)
 	stop_time_to_make_msh_file = time.time()
 	time_to_make_msh_file = stop_time_to_make_msh_file - start_time_to_make_msh_file
 	print 2, time_to_make_msh_file
