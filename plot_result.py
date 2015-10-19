@@ -8,8 +8,8 @@
 # Example:
 ###############################################################################
 import os
-import matplotlib.pyplot as plt
 import matplotlib
+import matplotlib.pyplot as plt
 import os.path
 
 ###############################################################################
@@ -43,6 +43,6 @@ def plot_file(filename, data):
 	plt.ylabel('Force')
 	plt.title(filename)
 	plt.yscale('log')
-	image = open(os.path.splitext(filename)[0] + '.png', "w")
-	plt.savefig(image, format = "png")
-
+	plt.savefig(os.path.splitext(filename)[0] + '.png')
+	#image = open(os.path.splitext(filename)[0] + '.png', "w")
+	#plt.savefig(image, format = "png")
