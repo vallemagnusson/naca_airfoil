@@ -17,12 +17,12 @@ import os.path
 # Arguments:
 #	filename: Path o the file
 ###############################################################################
-def plot_file(filename):
+def plot_file(filename, data):
 	f = open("drag_ligt.m", "r")
 	s = f.read().split('\n')
-	time = []
-	drag = []
-	lift = []
+	time = data[0]
+	lift = data[1]
+	drag = data[2]
 	for line in s[1:]:
 		l = line.split(' ')
 		elemlist = []
