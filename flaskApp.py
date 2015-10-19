@@ -44,6 +44,7 @@ def runsh():
 	print content
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
 	print 7, "Fel"
+	print response
 	result = response.apply_async()
 	print 8, "Fel"
 	print result
