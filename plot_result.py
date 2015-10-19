@@ -23,6 +23,7 @@ def plot_file(filename, data):
 	#f = open("drag_ligt.m", "r")
 	#s = f.read().split('\n')
 	time = np.array(data[0])
+	print time
 	lift = np.array(data[1])
 	drag = np.array(data[2])
 	#for line in s[1:]:
@@ -45,6 +46,6 @@ def plot_file(filename, data):
 	plt.title(filename)
 	plt.yscale('log')
 	plt.savefig(os.path.splitext(filename)[0] + '.png')
-	save("signal", ext="png", close=False, verbose=True)
+	#save("signal", ext="png", close=False, verbose=True)
 	#image = open(os.path.splitext(filename)[0] + '.png', "w")
 	#plt.savefig(image, format = "png")
