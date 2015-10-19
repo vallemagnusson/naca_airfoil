@@ -8,7 +8,7 @@
 # Example:
 ###############################################################################
 import os
-import matplotlib
+#import matplotlib
 import matplotlib.pyplot as plt
 import os.path
 import numpy as np
