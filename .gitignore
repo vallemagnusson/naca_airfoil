@@ -6,3 +6,4 @@ workerSetup.py
 terminateWorker.py
 ACC-Course-openrc.sh
 *.yml
+*.pyc
