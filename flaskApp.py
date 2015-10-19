@@ -37,38 +37,28 @@ def runsh():
 	##################################
 
 	appLocation = app.root_path
-	print 4, "Fel"
 	fileLocation = appLocation + "/msh/"
-	print 5, "Fel"
 	content = sorted(os.listdir(fileLocation))
-	print 6, "Fel"
-	#print content
-	for i in content:
-		if i == "r0a0n200.msh":
-			response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
-			print 7, "Fel"
-			#print response
-			result = response.apply_async()
-			print 8, "Fel"
-			#print result
-			result.get()
-			print 9, "Fel"
-			#for i in range(len(content)):
-			#	print content[i]
-			#	fileContent = open(fileLocation+content[i], "r").read()
-			#	#print fileContent
-			#	response = group()
-			#	convertFile(content[i], fileContent)
-			for t in result.get():
-				(fileNamePlot, data) = t
-				plot_file(fileNamePlot, data)
-			subprocess.call(["rm", "-rf", "msh/*.msh"])
-			return render_template('runsh.html', 
-									angle_start=angle_start, 
-									angle_stop=angle_stop, 
-									n_angles=n_angles, 
-									n_nodes=n_nodes, 
-									n_levels=n_levels)
+	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
+	result = response.apply_async()
+	result.get()
+	print 9, "Fel"
+	#for i in range(len(content)):
+	#	print content[i]
+	#	fileContent = open(fileLocation+content[i], "r").read()
+	#	#print fileContent
+	#	response = group()
+	#	convertFile(content[i], fileContent)
+	for t in result.get():
+		(fileNamePlot, data) = t
+		plot_file(fileNamePlot, data)
+	subprocess.call(["rm", "-rf", "msh/*.msh"])
+	return render_template('runsh.html', 
+							angle_start=angle_start, 
+							angle_stop=angle_stop, 
+							n_angles=n_angles, 
+							n_nodes=n_nodes, 
+							n_levels=n_levels)
 
 
 if __name__ == "__main__":
