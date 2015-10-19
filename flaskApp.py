@@ -41,13 +41,13 @@ def runsh():
 	print 5, "Fel"
 	content = sorted(os.listdir(fileLocation))
 	print 6, "Fel"
-	print content
+	#print content
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
 	print 7, "Fel"
-	print response
+	#print response
 	result = response.apply_async()
 	print 8, "Fel"
-	print result
+	#print result
 	result.get()
 	print 9, "Fel"
 	#for i in range(len(content)):
