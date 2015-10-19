@@ -45,6 +45,8 @@ def runsh():
 	print 7, "Fel"
 	result = response.apply_async()
 	print 8, "Fel"
+	print result
+	print result.get()
 	result.get()
 	print 9, "Fel"
 	#for i in range(len(content)):
