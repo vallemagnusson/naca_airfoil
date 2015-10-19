@@ -35,8 +35,10 @@ def convertFile(fileName, mshFile):
 	##########################################
 	#os.mkdir(fileNameWithoutExtension)
 	subprocess.call(["mkdir", fileNameWithoutExtension])
-	os.system('cp -a airfoil ' + fileNameWithoutExtension)
-	os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension)
+	subprocess.call(["cp", "-a", "airfoil", fileNameWithoutExtension])
+	#os.system('cp -a airfoil ' + fileNameWithoutExtension)
+	#os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension)
+
 	##########################################
 	########## Run airfoil on file ###########
 	##########################################
@@ -44,8 +46,9 @@ def convertFile(fileName, mshFile):
 	visc = 0.0001
 	speed = 10.
 	T = 1
-	os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" + xmlFileName + " &> /dev/null")
-	os.chdir("/home/ubuntu/naca_airfoil/")
+	subprocess.call([".airfoil", num, visc, speed, T, xmlFileName], cwd=fileNameWithoutExtension)
+	#os.system("./airfoil " + str(num) + " " + str(visc) + " " + str(speed) + " " + str(T) + " " + "../" + xmlFileName + " &> /dev/null")
+	#os.chdir("/home/ubuntu/naca_airfoil/")
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
