@@ -6,7 +6,7 @@
    <body>
        <div id="container">
            <div class="title">
-               <h1>POST request with Flask</h1>
+               <h1>Input to run.sh file</h1>
            </div>
            <div id="content">
                <form method="post" action="{{ url_for('runsh') }}">
@@ -20,6 +20,19 @@
                    <input type="text" name="n_nodes" /><br />
                    <label for="n_levels">Please enter n_levels:</label>
                    <input type="text" name="n_levels" /><br />
+
+                     <div class="title">
+                         <h1>Input to airfoil</h1>
+                     </div>
+
+                   <label for="angle_start">Please enter num_samples:</label>
+                   <input type="text" name="angle_start" /><br />
+                   <label for="angle_stop">Please enter visc:</label>
+                   <input type="text" name="angle_stop" /><br />
+                   <label for="n_angles">Please enter speed:</label>
+                   <input type="text" name="n_angles" /><br />
+                   <label for="n_nodes">Please enter T:</label>
+                   <input type="text" name="n_nodes" /><br />
                    <input type="submit" />
                </form>
            </div>
