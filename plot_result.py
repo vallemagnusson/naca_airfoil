@@ -37,7 +37,7 @@ def plot_file(filename, data):
 	#	time.append(elemlist[0])
 	#	drag.append(elemlist[1])
 	#	lift.append(elemlist[2])
-	plt.gca().set_color_cycle(['blue', 'red'])
+	#plt.gca().set_color_cycle(['blue', 'red'])
 	print 4
 	plt.plot(time, drag)
 	print 5
