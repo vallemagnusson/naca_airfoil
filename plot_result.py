@@ -11,7 +11,6 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib
 import os.path
-matplotlib.use('Agg')
 
 ###############################################################################
 # Takes a .m file that is created by the airfoil binary and creates a plot 
