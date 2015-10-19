@@ -7,6 +7,7 @@ import os
 import time
 from proj import convertFile
 import subprocess
+from plot_result import plot_file
 
 app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
@@ -58,6 +59,7 @@ def runsh():
 	#	convertFile(content[i], fileContent)
 	for t in result.get():
 		print t
+		#plot_file(fileName)
 	subprocess.call(["rm", "-rf", "*.msh"], cwd="msh/")
 	return render_template('runsh.html', 
 							angle_start=angle_start, 

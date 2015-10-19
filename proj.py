@@ -55,7 +55,7 @@ def convertFile(fileName, mshFile):
 	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
 	#shutil.rmtree(fileNameWithoutExtension)
 	os.system("rm -rf " + fileNameWithoutExtension + "*")
-	return resultLists
+	return (fileName, resultLists)
 
 @app.task
 def readFile(fileName):

@@ -1,7 +1,7 @@
 #cloud-config
 
-#apt_sources:
-#    - source: "ppa:fenics-packages/fenics"
+apt_sources:
+    - source: "ppa:fenics-packages/fenics"
 
 package_update: true
 package_upgrade: true
@@ -10,7 +10,7 @@ packages:
     - git
     - python-pip
     - rabbitmq-server
-#    - fenics
+    - fenics
     - gmsh
     - python-numpy
 
