@@ -30,9 +30,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels], cwd=fileNameWithoutExtension+"/")
 	#appLocation = app.root_path
-	./run.sh 13 13 1 10 0
-	./run.sh 18 18 1 10 0
-
+	
 	#for i in content:
 	#	if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
 	#		fileName = content[i]
