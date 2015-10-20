@@ -20,8 +20,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	runCheck = subprocess.check_call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
 	while runCheck != 0:
+		print "run.sh not OK!!!!!"
 		runCheck = subprocess.check_call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
-		
+
 	#appLocation = app.root_path
 	#for i in content:
 	#	if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
