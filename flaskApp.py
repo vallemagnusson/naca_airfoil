@@ -43,8 +43,9 @@ def runsh():
 		if in_db("r" + n_levels + "a" + str(angle) + "n" + n_nodes + "N" + num_samples + "v" + visc + "s" + speed + "T" + T + ".msh") == False :
 			print "Ja en vinkel!"
 			angles.append(angle)
-	print "Nu skickas allt ivag :)"
+	
 	if len(angles) != 0:
+		print "Nu skickas allt ivag :)"
 		response = group(convertFile.s(angle, n_nodes, n_levels, num_samples, visc, speed, T) for angle in angles)
 		result = response.apply_async()
 		result.get()
