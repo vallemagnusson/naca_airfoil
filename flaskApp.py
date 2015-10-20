@@ -44,37 +44,38 @@ def runsh():
 			print "Ja en vinkel!"
 			angles.append(angle)
 	print "Nu skickas allt ivag :)"
-	response = group(convertFile.s(angle, n_nodes, n_levels, num_samples, visc, speed, T) for angle in angles)
-	result = response.apply_async()
-	result.get()
+	if len(angles) != 0:
+		response = group(convertFile.s(angle, n_nodes, n_levels, num_samples, visc, speed, T) for angle in angles)
+		result = response.apply_async()
+		result.get()
 
 
-	########################
-	##### Create *.msh #####
-	########################
-	#time_1 = time.time()
-	#subprocess.call(["./run.sh", angle_start, angle_stop, n_angles, n_nodes, n_levels])
-	#time_2 = time.time()
-	#print 2, time_2 - time_1
-	#############################################
-	##### Convert *.msh to *.xml + lite mer #####
-	#############################################
-	#appLocation = app.root_path
-	#fileLocation = appLocation + "/msh/"
-	#content = sorted(os.listdir(fileLocation))
-	#response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
-	#result = response.apply_async()
-	#result.get()
-	#time_3 = time.time()
-	#print 3, time_3 - time_2
-	for t in result.get():
-		(fileNamePlot, data) = t
-		plot_file(fileNamePlot, data)
-		to_db(fileNamePlot, "")
-	os.system("rm -rf  msh/*")
-	os.system("rm -rf  geo/*")
+		########################
+		##### Create *.msh #####
+		########################
+		#time_1 = time.time()
+		#subprocess.call(["./run.sh", angle_start, angle_stop, n_angles, n_nodes, n_levels])
+		#time_2 = time.time()
+		#print 2, time_2 - time_1
+		#############################################
+		##### Convert *.msh to *.xml + lite mer #####
+		#############################################
+		#appLocation = app.root_path
+		#fileLocation = appLocation + "/msh/"
+		#content = sorted(os.listdir(fileLocation))
+		#response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
+		#result = response.apply_async()
+		#result.get()
+		#time_3 = time.time()
+		#print 3, time_3 - time_2
+		for t in result.get():
+			(fileNamePlot, data) = t
+			plot_file(fileNamePlot, data)
+			to_db(fileNamePlot, "")
+		os.system("rm -rf  msh/*")
+		os.system("rm -rf  geo/*")
 
-	subprocess.call(["mv", "*.png", "pictures"])
+		subprocess.call(["mv", "*.png", "pictures"])
 
 	return render_template('site/runsh.html', 
 							angle_start=angle_start, 

@@ -28,6 +28,7 @@ runcmd:
     - chmod -R 777 /home/ubuntu/messaging
     - chmod -R 777 /home/ubuntu/naca_airfoil
     - mkdir /home/ubuntu/naca_airfoil/pictures
+    - chmod -R 777 /home/ubuntu/naca_airfoil/pictures
     - rabbitmqctl add_user mava orkarinte
     - rabbitmqctl add_vhost app2
     - rabbitmqctl set_permissions -p app2 mava ".*" ".*" ".*"
