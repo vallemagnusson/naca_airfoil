@@ -20,8 +20,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
 	#appLocation = app.root_path
-	fileLocation = "/home/ubuntu/naca_airfoil/msh/"
-	content = sorted(os.listdir(fileLocation))
+	
 	#for i in content:
 	#	if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
 	#		fileName = content[i]
@@ -32,6 +31,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	#newFile.write(mshFile)
 	#newFile = open(fileName, "r")
 	#newFile.close()
+	fileLocation = "/home/ubuntu/naca_airfoil/msh/"
 	while fileName not in content:
 		print "run.sh not ready"
 		content = sorted(os.listdir(fileLocation))
@@ -40,6 +40,10 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
 	subprocess.call(["dolfin-convert", "msh/"+fileName, xmlFileName])
+	fileLocation = "/home/ubuntu/naca_airfoil/"
+	while fileName not in content:
+		print "run.sh not ready"
+		content = sorted(os.listdir(fileLocation))
 	##########################################
 	########## Copy airfoil to dir ###########
 	##########################################
