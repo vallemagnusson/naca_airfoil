@@ -49,7 +49,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	visc_s = str(visc)
 	speed_s = str(speed)
 	T_s = str(T)
-	subprocess.call(["./airfoil", num, visc_s, speed_s, T_s, "../" + xmlFileName + " > output.log"], cwd=fileNameWithoutExtension+"/")
+	subprocess.call(["./airfoil", num, visc_s, speed_s, T_s, "../" + xmlFileName], cwd=fileNameWithoutExtension+"/")
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
