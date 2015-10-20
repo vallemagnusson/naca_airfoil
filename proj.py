@@ -41,11 +41,11 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
 	subprocess.call(["dolfin-convert", "msh/"+fileName, xmlFileName])
-	
+
 	fileLocation = "/home/ubuntu/naca_airfoil/"
 	content = sorted(os.listdir(fileLocation))
-	while fileName not in content:
-		print "run.sh not ready"
+	while xmlFileName not in content:
+		print "dolfin-convert not ready"
 		content = sorted(os.listdir(fileLocation))
 	##########################################
 	########## Copy airfoil to dir ###########
