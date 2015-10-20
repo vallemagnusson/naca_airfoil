@@ -15,13 +15,13 @@ app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.12
 
 @app.task
 def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
-	print "Started to process file: "# + str(fileName)
+	fileName = "r" + n_levels + "a" + str(angle) + "n" + n_nodes + ".msh"
+	print "Started to process file: " + str(fileName)
 
 	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
 	#appLocation = app.root_path
 	fileLocation = "/home/ubuntu/naca_airfoil/msh/"
 	content = sorted(os.listdir(fileLocation))
-	fileName = "r" + n_levels + "a" + str(angle) + "n" + n_nodes + ".msh"
 	#for i in content:
 	#	if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
 	#		fileName = content[i]
@@ -32,6 +32,10 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	#newFile.write(mshFile)
 	#newFile = open(fileName, "r")
 	#newFile.close()
+	while fileName not in content:
+		print "run.sh not ready"
+		content = sorted(os.listdir(fileLocation))
+
 	fileNameWithoutExtension = os.path.splitext(fileName)[0]
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
@@ -41,7 +45,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	##########################################
 	subprocess.call(["mkdir", fileNameWithoutExtension])
 	subprocess.call(["cp", "-a", "airfoil", fileNameWithoutExtension])
-
+	
 	##########################################
 	########## Run airfoil on file ###########
 	##########################################
