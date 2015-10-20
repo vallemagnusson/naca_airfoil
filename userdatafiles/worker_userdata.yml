@@ -22,6 +22,8 @@ runcmd:
     - chmod -R 777 /home/ubuntu/messaging
     - chmod -R 777 /home/ubuntu/naca_airfoil
     - mkdir /home/ubuntu/naca_airfoil/msh
+    - chmod -R 777 /home/ubuntu/naca_airfoil/msh/
     - mkdir /home/ubuntu/naca_airfoil/geo
+    - chmod -R 777 /home/ubuntu/naca_airfoil/geo/
     - cd /home/ubuntu/naca_airfoil
     - sudo -H -u ubuntu bash -c "celery worker -A proj &"
