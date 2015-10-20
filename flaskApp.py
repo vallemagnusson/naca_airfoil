@@ -59,9 +59,9 @@ def runsh():
 	#appLocation = app.root_path
 	#fileLocation = appLocation + "/msh/"
 	#content = sorted(os.listdir(fileLocation))
-	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
-	result = response.apply_async()
-	result.get()
+	#response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
+	#result = response.apply_async()
+	#result.get()
 	time_3 = time.time()
 	print 3, time_3 - time_2
 	for t in result.get():

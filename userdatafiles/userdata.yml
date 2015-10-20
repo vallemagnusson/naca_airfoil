@@ -13,6 +13,7 @@ packages:
 #    - fenics
 #    - gmsh
     - python-numpy
+    - python-matplotlib
 
 runcmd:
     - pip install Flask
