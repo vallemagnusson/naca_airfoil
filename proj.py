@@ -18,8 +18,8 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	print "Started to process file: "# + str(fileName)
 
 	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
-	appLocation = app.root_path
-	fileLocation = appLocation + "/msh/"
+	#appLocation = app.root_path
+	fileLocation = "/home/ubuntu/naca_airfoil/msh/"
 	content = sorted(os.listdir(fileLocation))
 	filenName = ""
 	for i in content:
