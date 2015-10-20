@@ -24,11 +24,12 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	subprocess.call(["cp", "-a", "airfoil", fileNameWithoutExtension])
 	subprocess.call(["cp", "-a", "run.sh", fileNameWithoutExtension])
+	os.chdir("/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension + "/")
 
 
 	print "Started to process file: " + str(fileName)
 
-	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels], cwd=fileNameWithoutExtension+"/")
+	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
 	#appLocation = app.root_path
 
 	#for i in content:
@@ -49,7 +50,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
-	subprocess.call(["dolfin-convert", "msh/"+fileName, xmlFileName], cwd=fileNameWithoutExtension+"/")
+	subprocess.call(["dolfin-convert", "msh/"+fileName, xmlFileName])
 
 	fileLocation = "/home/ubuntu/naca_airfoil/"
 	content = sorted(os.listdir(fileLocation))
@@ -72,7 +73,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	visc_s = str(visc)
 	speed_s = str(speed)
 	T_s = str(T)
-	subprocess.call(["./airfoil", num, visc_s, speed_s, T_s, xmlFileName], cwd=fileNameWithoutExtension+"/")
+	subprocess.call(["./airfoil", num, visc_s, speed_s, T_s, xmlFileName])
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
