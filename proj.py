@@ -17,7 +17,7 @@ app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.12
 def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	print "Started to process file: "# + str(fileName)
 
-	subprocess.call(["./run.sh", angle, angle, "1", n_nodes, n_levels])
+	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh/"
 	content = sorted(os.listdir(fileLocation))
