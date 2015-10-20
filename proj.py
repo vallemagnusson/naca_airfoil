@@ -21,6 +21,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	appLocation = app.root_path
 	fileLocation = appLocation + "/msh/"
 	content = sorted(os.listdir(fileLocation))
+	filenName = ""
 	for i in content:
 		if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
 			filenName = content[i]
@@ -44,10 +45,10 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	##########################################
 	########## Run airfoil on file ###########
 	##########################################
-	num = str(10)
-	visc_s = str(0.0001)
-	speed_s = str(10.)
-	T_s = str(0.2)
+	num = str(num_samples)
+	visc_s = str(visc)
+	speed_s = str(speed)
+	T_s = str(T)
 	subprocess.call(["./airfoil", num, visc, speed, T, "../" + xmlFileName + " > output.log"], cwd=fileNameWithoutExtension+"/")
 	##########################################
 	######### Get drag_ligt.m values #########

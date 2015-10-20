@@ -67,7 +67,7 @@ def runsh():
 	for t in result.get():
 		(fileNamePlot, data) = t
 		plot_file(fileNamePlot, data)
-		to_db(fileName, "")
+		to_db(fileNamePlot, "")
 	os.system("rm -rf  msh/*")
 	os.system("rm -rf  geo/*")
 
