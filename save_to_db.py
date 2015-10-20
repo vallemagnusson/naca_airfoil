@@ -16,6 +16,6 @@ def in_db(fileName):
 	db = pickledb.load(dataBaseName, False)
 	dbKeys = db.getall()
 	if fileName in dbKeys:
-		return ""
+		print "Already in db!"
 	else:
 		return fileName
