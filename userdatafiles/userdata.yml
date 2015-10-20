@@ -19,6 +19,8 @@ runcmd:
     - pip install Flask
     - pip install celery
     - pip install flower
+    - pip install pickledb
+    - pip install simplejson
     - git clone https://github.com/vallemagnusson/messaging.git
     - mv messaging home/ubuntu/messaging
     - git clone https://github.com/vallemagnusson/naca_airfoil.git

@@ -33,12 +33,12 @@ def runsh():
 	###########################
 	#anglediff=$((($angle_stop-$angle_start)/$n_angles))
 
-	anglediff = (angle_stop - angle_start) / n_angles
+	anglediff = (int(angle_stop) - int(angle_start)) / int(n_angles)
 	
 	angles = []
-	for i in range(0, n_angles):
+	for i in range(0, int(n_angles)):
 		angle = 0
-		angle = (angle_start + anglediff * i)
+		angle = (int(angle_start) + anglediff * i)
 		angles = in_db("r" + n_levels + "a" + angle + "n" + n_nodes + "N" + num_samples + "v" + visc + "s" + speed + "T" + T + ".msh")
 		
 	response = group(convertFile.s(angle, n_nodes, n_levels, num_samples, visc, speed, T) for angle in angles)
