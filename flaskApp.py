@@ -8,6 +8,7 @@ import time
 from proj import convertFile
 import subprocess
 from plot_result import plot_file
+from save_to_db import to_db, in_db
 
 app = Flask(__name__, template_folder="/home/ubuntu/naca_airfoil")
 
@@ -22,20 +23,42 @@ def runsh():
 	n_angles=request.form['n_angles']
 	n_nodes=request.form['n_nodes']
 	n_levels=request.form['n_levels']
+	num_samples=request.form['num_samples']
+	visc=request.form['visc']
+	speed=request.form['speed']
+	T=request.form['T']
 	print 1, "- - - - - - - - Run start - - - - - - - -"
+	###########################
+	##### Check if exists #####
+	###########################
+	#anglediff=$((($angle_stop-$angle_start)/$n_angles))
+
+	anglediff = (angle_stop - angle_start) / n_angles
+	
+	angles = []
+	for i in range(0, n_angles):
+		angle = 0
+		angle = (angle_start + anglediff * i)
+		angles = in_db("r" + n_levels + "a" + angle + "n" + n_nodes + ".msh")
+		
+	response = group(convertFile.s(angle, n_nodes, n_levels, num_samples, visc, speed, T) for angle in angles)
+	result = response.apply_async()
+	result.get()
+
+
 	########################
 	##### Create *.msh #####
 	########################
-	time_1 = time.time()
-	subprocess.call(["./run.sh", angle_start, angle_stop, n_angles, n_nodes, n_levels])
-	time_2 = time.time()
-	print 2, time_2 - time_1
+	#time_1 = time.time()
+	#subprocess.call(["./run.sh", angle_start, angle_stop, n_angles, n_nodes, n_levels])
+	#time_2 = time.time()
+	#print 2, time_2 - time_1
 	#############################################
 	##### Convert *.msh to *.xml + lite mer #####
 	#############################################
-	appLocation = app.root_path
-	fileLocation = appLocation + "/msh/"
-	content = sorted(os.listdir(fileLocation))
+	#appLocation = app.root_path
+	#fileLocation = appLocation + "/msh/"
+	#content = sorted(os.listdir(fileLocation))
 	response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
 	result = response.apply_async()
 	result.get()
@@ -44,8 +67,11 @@ def runsh():
 	for t in result.get():
 		(fileNamePlot, data) = t
 		plot_file(fileNamePlot, data)
+		to_db(fileName, "")
 	os.system("rm -rf  msh/*")
 	os.system("rm -rf  geo/*")
+
+	subprocess.call(["mv", "*.png", "pictures"])
 
 	return render_template('site/runsh.html', 
 							angle_start=angle_start, 

@@ -14,15 +14,23 @@ import subprocess
 app = Celery('proj', backend='amqp', broker='amqp://mava:orkarinte@130.238.29.120:5672/app2')
 
 @app.task
-def convertFile(fileName, mshFile):
+def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	print "Started to process file: " + str(fileName)
+
+	subprocess.call(["./run.sh", angle, angle, "1", n_nodes, n_levels])
+	appLocation = app.root_path
+	fileLocation = appLocation + "/msh/"
+	content = sorted(os.listdir(fileLocation))
+	for i in content:
+		if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
+			filenName = content[i]
 	##########################################
 	##### Conver file from *msh to *.xml #####
 	##########################################
-	newFile = open(fileName, "w")
-	newFile.write(mshFile)
-	newFile = open(fileName, "r")
-	newFile.close()
+	#newFile = open(fileName, "w")
+	#newFile.write(mshFile)
+	#newFile = open(fileName, "r")
+	#newFile.close()
 	fileNameWithoutExtension = os.path.splitext(fileName)[0]
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
@@ -37,16 +45,18 @@ def convertFile(fileName, mshFile):
 	########## Run airfoil on file ###########
 	##########################################
 	num = str(10)
-	visc = str(0.0001)
-	speed = str(10.)
-	T = str(1)
+	visc_s = str(0.0001)
+	speed_s = str(10.)
+	T_s = str(0.2)
 	subprocess.call(["./airfoil", num, visc, speed, T, "../" + xmlFileName + " > output.log"], cwd=fileNameWithoutExtension+"/")
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
 	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
 	os.system("rm -rf " + fileNameWithoutExtension + "*")
-	return (fileName, resultLists)
+	os.system("rm -rf  msh/*")
+	os.system("rm -rf  geo/*")
+	return (fileNameWithoutExtension+"N"+num+"v"+visc_s+"s"+speed_s+"T"+T_s+".msh, resultLists)
 
 @app.task
 def readFile(fileName):
