@@ -30,7 +30,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	subprocess.call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels], cwd=fileNameWithoutExtension+"/")
 	#appLocation = app.root_path
-	
+
 	#for i in content:
 	#	if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
 	#		fileName = content[i]
@@ -76,9 +76,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
-	#while "results" not in content:
-	#	print "result form airfoil not ready"
-	#	content = sorted(os.listdir(fileLocation))
+	while "results" not in content:
+		print "result form airfoil not ready"
+		content = sorted(os.listdir(fileLocation))
 	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
 	os.system("rm -rf " + fileNameWithoutExtension + "*")
 	os.system("rm -rf  msh/*")
