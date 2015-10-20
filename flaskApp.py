@@ -65,8 +65,8 @@ def runsh():
 	#response = group(convertFile.s(fileName, open(fileLocation+fileName, "r").read()) for fileName in content)
 	#result = response.apply_async()
 	#result.get()
-	time_3 = time.time()
-	print 3, time_3 - time_2
+	#time_3 = time.time()
+	#print 3, time_3 - time_2
 	for t in result.get():
 		(fileNamePlot, data) = t
 		plot_file(fileNamePlot, data)
