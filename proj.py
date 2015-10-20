@@ -21,10 +21,10 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	#appLocation = app.root_path
 	fileLocation = "/home/ubuntu/naca_airfoil/msh/"
 	content = sorted(os.listdir(fileLocation))
-	filenName = ""
-	for i in content:
-		if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
-			filenName = content[i]
+	fileName = "r" + n_levels + "a" + str(angle) + "n" + n_nodes + ".msh"
+	#for i in content:
+	#	if i == "r" + n_levels + "a" + angle + "n" + n_nodes + ".msh":
+	#		fileName = content[i]
 	##########################################
 	##### Conver file from *msh to *.xml #####
 	##########################################
