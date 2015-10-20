@@ -52,7 +52,12 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	##########################################
 	subprocess.call(["mkdir", fileNameWithoutExtension])
 	subprocess.call(["cp", "-a", "airfoil", fileNameWithoutExtension])
-	
+
+	fileLocation = "/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension
+	content = sorted(os.listdir(fileLocation))
+	while "airfoil" not in content:
+		print "moving airfoil not ready"
+		content = sorted(os.listdir(fileLocation))
 	##########################################
 	########## Run airfoil on file ###########
 	##########################################
@@ -64,6 +69,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
+	while "results" not in content:
+		print "result form airfoil not ready"
+		content = sorted(os.listdir(fileLocation))
 	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
 	os.system("rm -rf " + fileNameWithoutExtension + "*")
 	os.system("rm -rf  msh/*")
