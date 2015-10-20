@@ -35,7 +35,7 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	fileNameWithoutExtension = os.path.splitext(fileName)[0]
 	xmlFileName = fileNameWithoutExtension + ".xml"
 	print fileNameWithoutExtension
-	subprocess.call(["dolfin-convert", fileName, xmlFileName])
+	subprocess.call(["dolfin-convert", "msh/"+fileName, xmlFileName])
 	##########################################
 	########## Copy airfoil to dir ###########
 	##########################################
