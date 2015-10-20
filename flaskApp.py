@@ -75,8 +75,8 @@ def runsh():
 			to_db(fileNamePlot, "")
 		os.system("rm -rf  msh/*")
 		os.system("rm -rf  geo/*")
-
-		subprocess.call(["mv", "*.png", "pictures/"])
+		os.system("mv *.png pictures/")
+		#subprocess.call(["mv", "*.png", "pictures/"])
 
 	return render_template('site/runsh.html', 
 							angle_start=angle_start, 
