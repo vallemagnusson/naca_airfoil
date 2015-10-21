@@ -18,10 +18,10 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	fileName = "r" + n_levels + "a" + str(angle) + "n" + n_nodes + ".msh"
 	print "Started to process file: " + str(fileName)
 
-	runCheck = subprocess.check_call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
-	while runCheck != 0:
-		print "run.sh not OK!!!!!"
-		runCheck = subprocess.check_call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
+	runCheck = subprocess.check_call(["sudo", "./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
+	#while runCheck != 0:
+	#	print "run.sh not OK!!!!!"
+	#	runCheck = subprocess.check_call(["./run.sh", str(angle), str(angle), "1", n_nodes, n_levels])
 
 	#appLocation = app.root_path
 	#for i in content:
@@ -36,9 +36,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	#newFile.close()
 	fileLocation = "/home/ubuntu/naca_airfoil/msh/"
 	content = sorted(os.listdir(fileLocation))
-	while fileName not in content:
-		print "run.sh not ready"
-		content = sorted(os.listdir(fileLocation))
+	#while fileName not in content:
+	#	print "run.sh not ready"
+	#	content = sorted(os.listdir(fileLocation))
 
 	fileNameWithoutExtension = os.path.splitext(fileName)[0]
 	xmlFileName = fileNameWithoutExtension + ".xml"
@@ -47,9 +47,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	fileLocation = "/home/ubuntu/naca_airfoil/"
 	content = sorted(os.listdir(fileLocation))
-	while xmlFileName not in content:
-		print "dolfin-convert not ready"
-		content = sorted(os.listdir(fileLocation))
+	#while xmlFileName not in content:
+	#	print "dolfin-convert not ready"
+	#	content = sorted(os.listdir(fileLocation))
 	##########################################
 	########## Copy airfoil to dir ###########
 	##########################################
@@ -58,9 +58,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 
 	fileLocation = "/home/ubuntu/naca_airfoil/" + fileNameWithoutExtension
 	content = sorted(os.listdir(fileLocation))
-	while "airfoil" not in content:
-		print "moving airfoil not ready"
-		content = sorted(os.listdir(fileLocation))
+	#while "airfoil" not in content:
+	#	print "moving airfoil not ready"
+	#	content = sorted(os.listdir(fileLocation))
 	##########################################
 	########## Run airfoil on file ###########
 	##########################################
@@ -72,9 +72,9 @@ def convertFile(angle, n_nodes, n_levels, num_samples, visc, speed, T):
 	##########################################
 	######### Get drag_ligt.m values #########
 	##########################################
-	while "results" not in content:
-		print "result form airfoil not ready"
-		content = sorted(os.listdir(fileLocation))
+	#while "results" not in content:
+	#	print "result form airfoil not ready"
+	#	content = sorted(os.listdir(fileLocation))
 	resultLists = readFile("/home/ubuntu/naca_airfoil/" +fileNameWithoutExtension+"/results/drag_ligt.m")
 	os.system("rm -rf " + fileNameWithoutExtension + "*")
 	os.system("rm -rf  msh/*")

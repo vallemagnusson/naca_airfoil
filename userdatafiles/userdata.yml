@@ -11,7 +11,7 @@ packages:
     - python-pip
     - rabbitmq-server
 #    - fenics
-#    - gmsh
+    - gmsh
     - python-numpy
     - python-matplotlib
 
@@ -25,10 +25,16 @@ runcmd:
     - mv messaging home/ubuntu/messaging
     - git clone https://github.com/vallemagnusson/naca_airfoil.git
     - mv naca_airfoil home/ubuntu/naca_airfoil
+    #- git clone -b valle https://github.com/jantus/ACC-project.git
+    #- mv ACC-project/naca_airfoil home/ubuntu/naca_airfoil
     - chmod -R 777 /home/ubuntu/messaging
     - chmod -R 777 /home/ubuntu/naca_airfoil
     - mkdir /home/ubuntu/naca_airfoil/pictures
     - chmod -R 777 /home/ubuntu/naca_airfoil/pictures
+    - mkdir /home/ubuntu/naca_airfoil/msh
+    - chmod -R 777 /home/ubuntu/naca_airfoil/msh/
+    - mkdir /home/ubuntu/naca_airfoil/geo
+    - chmod -R 777 /home/ubuntu/naca_airfoil/geo/
     - rabbitmqctl add_user mava orkarinte
     - rabbitmqctl add_vhost app2
     - rabbitmqctl set_permissions -p app2 mava ".*" ".*" ".*"
